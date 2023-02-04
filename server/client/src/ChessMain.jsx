@@ -3,13 +3,10 @@ import { Chess } from 'chess.js'
 import Chessboard from 'chessboardjsx'
 import { Button, Flex } from '@chakra-ui/react'
 import Video from './Video'
-import { Spinner } from '@chakra-ui/react'
 
 const ChessMain = ({roomCode, socket , black ,white}) => {
     const [Fen , setFen] = useState('start')
-    const [reset,setreset] = useState(false)
-    const [startvideo,setstartvideo] = useState(false)
-  
+ 
     let game =  useRef(null)
 
 
@@ -38,9 +35,6 @@ const ChessMain = ({roomCode, socket , black ,white}) => {
       return () => socket.off("updateGame");
    }, [])
    
-        const startcall = ()=>{
-          setstartvideo(true)
-        }
 
  
 
@@ -94,7 +88,17 @@ const ChessMain = ({roomCode, socket , black ,white}) => {
       }} mt={8}>
         {
           
-          game.current && game.current.game_over() ? <span onClick={resetgame}>reset</span>:<span></span>
+          game.current && game.current.game_over() ? 
+          <div style={{
+            position: "absolute",left: "34%",
+            top: "50%",
+            transform: "translate(-50%,-50%)"}} >
+              <h1 style={{margin:"0.5rem",color:"red" ,fontWeight:"bold",fontSize:"20px"}}>game over</h1>
+              <Button colorScheme='teal' variant='solid' >
+          <span onClick={resetgame}>Start Again</span>
+        </Button>
+          </div>
+        :<span></span>
         }
         <div style={{backgroundColor:"#474350" ,width:"41rem",height:"40rem", borderRadius:"0.3rem", color:"#B58863",
         display:"flex",justifyContent:"center", alignItems:"center", boxShadow:"rgba(0, 0, 0, 0.35) 0px 5px 15px" }}>
@@ -112,6 +116,8 @@ const ChessMain = ({roomCode, socket , black ,white}) => {
 
         
       </Flex>
+
+
       </>
 
   )

@@ -10,7 +10,7 @@ import io from "socket.io-client";
 import RoomModal from './RoomModal';
 import Video from './Video';
 
-const socket = io.connect("http://localhost:5000");
+const socket = io.connect("https://chess-online1.herokuapp.com/");
 
 function App() {
   const [roomCode, setRoomCode] = useState(null);
