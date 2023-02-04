@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
 const http = require("http");
+const cors = require("cors");
 const server = http.createServer(app);
 const io = require("socket.io")(server, { cors: { origin: "*" } });
 require("dotenv").config();
-
+app.use(cors());
 io.on("connection", (socket) => {
   console.log("User Connected");
 
