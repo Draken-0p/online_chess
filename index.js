@@ -70,10 +70,12 @@ socket.emit("me", socket.id)
   
   
 });
+app.get('/',(req,res)=>{
+  res.send("welcome to onlinechess");
+})
 
 
-
-if(process.env.NODE_ENV == "production"){
+if(process.env.NODE_ENV == "production1"){
 
   app.use(express.static("client/build"))
 
