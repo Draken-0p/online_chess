@@ -10,7 +10,7 @@ import io from "socket.io-client";
 import RoomModal from './RoomModal';
 import Video from './Video';
 
-const socket = io.connect("http://localhost:5000/");
+const socket = io.connect("http://3.109.59.34:4000/");
 
 function App() {
   const [roomCode, setRoomCode] = useState(null);
